@@ -23,8 +23,9 @@ public static class CodeInterpreter
 
         //Create Agent
         ChatClientAgent agent = client
-            .GetResponsesClient("gpt-5-nano")
+            .GetResponsesClient()
             .AsAIAgent(
+                model: "gpt-5-nano",
                 tools:
                 [
                     new HostedCodeInterpreterTool()

@@ -20,9 +20,10 @@ public static class WebSearch
         //Create Agent
 #pragma warning disable OPENAI001
         ChatClientAgent agent = client
-            .GetResponsesClient("gpt-4.1-nano")
+            .GetResponsesClient()
 #pragma warning restore OPENAI001
             .AsAIAgent(
+                model: "gpt-4.1-nano",
                 tools:
                 [
                     AIFunctionFactory.Create(GetDateTimeUtc),
