@@ -57,7 +57,7 @@ public static class LifeOfAnLlmCall
             Output.Green($"Raw Request ({request.RequestUri})");
             Output.Gray(MakePretty(requestString));
             Output.Separator();
-            var response = await base.SendAsync(request, cancellationToken);
+            HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
 
             string responseString = await response.Content.ReadAsStringAsync(cancellationToken);
             Output.Green("Raw Response");
@@ -70,7 +70,7 @@ public static class LifeOfAnLlmCall
         {
             try
             {
-                var jsonElement = JsonSerializer.Deserialize<JsonElement>(input);
+                JsonElement jsonElement = JsonSerializer.Deserialize<JsonElement>(input);
                 return JsonSerializer.Serialize(jsonElement, new JsonSerializerOptions { WriteIndented = true });
             }
             catch (Exception e)
